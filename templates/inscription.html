@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Inscription</title>
+</head>
+<body>
+<h1>Inscription</h1>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul style="color: red;">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+
+<form method="POST">
+    {{ form.csrf_token }}
+    <p>{{ form.nom.label }} {{ form.nom() }}</p>
+    <p>{{ form.prenom.label }} {{ form.prenom() }}</p>
+    <p>{{ form.email.label }} {{ form.email() }}</p>
+    <p>{{ form.password.label }} {{ form.password() }}</p>
+    <p>{{ form.confirm.label }} {{ form.confirm() }}</p>
+    <p>{{ form.envoyer() }}</p>
+</form>
+</body>
+</html>

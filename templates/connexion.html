@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Connexion</title>
+</head>
+<body>
+<h1>Connexion à l'intranet</h1>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul style="color: red;">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+
+<form method="POST">
+    {{ form.csrf_token }}
+    <p>{{ form.email.label }} {{ form.email() }}</p>
+    <p>{{ form.mot_de_passe.label }} {{ form.mot_de_passe() }}</p>
+    <p>{{ form.envoyer() }}</p>
+</form>
+</body>
+</html>
